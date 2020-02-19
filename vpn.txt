@@ -1,0 +1,69 @@
+yum -y install python-setuptools && easy_install pip
+
+pip install shadowsocks 
+
+vi /etc/shadowsocks.json 
+
+复制代码
+{
+    "server":"0.0.0.0",
+    "server_port":50000,
+    "local_address": "127.0.0.1",
+    "local_port":1080,
+    "password":"zaq12wsx",
+    "timeout":300,
+    "method":"aes-256-cfb",
+    "fast_open": false
+}
+复制代码
+配置完成后记得设置开机自启动
+
+vim /etc/rc.local
+
+/usr/bin/ssserver -c /etc/shadowsocks.json -d start 
+
+还要更改一下文件的权限
+
+chmod +x  /etc/rc.local
+
+ 
+
+这里密码要改一下，启动不能用默认的密码
+
+启动：
+
+前台启动
+
+/usr/bin/ssserver -c /etc/shadowsocks.json  
+后台启动与停止
+
+/usr/bin/ssserver -c /etc/shadowsocks.json -d start  
+/usr/bin/ssserver -c /etc/shadowsocks.json -d stop  
+搭建完成
+
+没明白的可以直接复制上面的命令操作，启动的时候后台启动。下面把客户端安装上就可以用了
+
+安装shadowsocks客户端
+
+下载地址：
+
+
+
+Windows   
+https://github.com/shadowsocks/shadowsocks-windows/releases   
+Mac OS X   
+https://github.com/shadowsocks/***X-NG/releases  
+
+
+linux   
+https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation   
+https://github.com/shadowsocks/shadowsocks-qt5/releases  
+
+
+iOS   
+https://itunes.apple.com/app/apple-store/id1070901416?pt=2305194&ct=shadowsocks.org&mt=8   
+https://github.com/shadowsocks/shadowsocks-iOS/releases  
+
+Android   
+https://play.google.com/store/apps/details?id=com.github.shadowsocks   
+https://github.com/shadowsocks/shadowsocks-android/releases 
